@@ -18,23 +18,19 @@ jobs:
           cache: npm
       - run: npm install --frozen-lockfile
 
-      - name: Build
-        run: npm run docs:build
-
-      # 详细的调试步骤
-      - name: Debug - Full file check
+      - name: Clean cache and build
         run: |
-          echo "=== 项目根目录 ==="
-          ls -la
-          echo "=== 检查 .vitepress 目录 ==="
-          ls -la .vitepress/
-          echo "=== 检查 dist 目录内容 ==="
+          npx vite clean
+          npm run docs:build
+
+      - name: Debug - Check build output
+        run: |
+          echo "=== 检查构建输出 ==="
           ls -la .vitepress/dist/
-          echo "=== 检查 dist 目录大小 ==="
-          du -sh .vitepress/dist/
-          echo "=== 检查 index.html 是否存在 ==="
+          echo "=== 文件数量 ==="
+          find .vitepress/dist -type f | wc -l
+          echo "=== index.html 详情 ==="
           ls -la .vitepress/dist/index.html
-          echo "=== 构建完成确认 ==="
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
