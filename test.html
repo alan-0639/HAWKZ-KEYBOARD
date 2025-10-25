@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitePress 自定义侧边栏演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar {
+            width: 280px;
+            background-color: #f9fafb;
+            border-right: 1px solid #e1e5e9;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+        
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #e1e5e9;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #1a202c;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #4a5568;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: #edf2f7;
+            color: #2d3748;
+            border-left-color: #4299e1;
+        }
+        
+        .sidebar-menu a.active {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            border-left-color: #3182ce;
+            font-weight: 500;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0 20px 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        /* 主内容区域样式 */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .action-btn {
+            padding: 12px 24px;
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(66, 153, 225, 0.3);
+        }
+        
+        .action-btn:hover {
+            background-color: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(66, 153, 225, 0.4);
+        }
+        
+        .action-btn.active {
+            background-color: #2b6cb0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .action-btn.secondary {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .action-btn.secondary:hover {
+            background-color: #cbd5e0;
+        }
+        
+        .action-btn.secondary.active {
+            background-color: #a0aec0;
+            color: white;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .content-section h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        
+        .code-block {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background-color: #fffaf0;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e1e5e9;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>文档导航</h2>
+            </div>
+            
+            <!-- 操作A的侧边栏内容 -->
+            <div class="sidebar-content" id="sidebar-content-a">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-section">
+                        <div class="sidebar-section-title">操作 A 指南</div>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="active">开始使用</a></li>
+                            <li><a href="#">基础配置</a></li>
+                            <li><a href="#">高级功能</a></li>
+                            <li><a href="#">常见问题</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-section">
+                        <div class="sidebar-section-title">进阶教程</div>
+                        <ul class="sidebar-menu">
+                            <li><a href="#">性能优化</a></li>
+                            <li><a href="#">自定义扩展</a></li>
+                            <li><a href="#">最佳实践</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 操作B的侧边栏内容 -->
+            <div class="sidebar-content" id="sidebar-content-b" style="display: none;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-section">
+                        <div class="sidebar-section-title">操作 B 指南</div>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="active">快速入门</a></li>
+                            <li><a href="#">核心概念</a></li>
+                            <li><a href="#">配置选项</a></li>
+                            <li><a href="#">API 参考</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-section">
+                        <div class="sidebar-section-title">开发指南</div>
+                        <ul class="sidebar-menu">
+                            <li><a href="#">环境搭建</a></li>
+                            <li><a href="#">调试技巧</a></li>
+                            <li><a href="#">部署指南</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <div class="header">
+                <h1>VitePress 自定义侧边栏演示</h1>
+                <p>本示例展示如何为首页的不同操作显示不同的侧边栏内容</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn active" id="action-a">操作 A</button>
+                <button class="action-btn secondary" id="action-b">操作 B</button>
+            </div>
+            
+            <div class="content-section">
+                <h2>实现原理</h2>
+                <p>在 VitePress 中，可以通过配置文件动态控制侧边栏内容。以下是如何实现的：</p>
+                
+                <div class="code-block">
+// .vitepress/config.js
+export default {
+  title: '我的文档',
+  description: 'VitePress 自定义侧边栏示例',
+  
+  themeConfig: {
+    sidebar: {
+      '/': getSidebar()
+    }
+  }
+}
+
+// 根据当前路由或参数返回不同的侧边栏配置
+function getSidebar() {
+  // 获取当前操作类型（从URL参数或路由状态）
+  const action = getCurrentAction();
+  
+  if (action === 'action-a') {
+    return [
+      {
+        text: '操作 A 指南',
+        items: [
+          { text: '开始使用', link: '/action-a/getting-started' },
+          { text: '基础配置', link: '/action-a/basic-config' },
+          { text: '高级功能', link: '/action-a/advanced' },
+          { text: '常见问题', link: '/action-a/faq' }
+        ]
+      },
+      // 更多侧边栏项...
+    ]
+  } else if (action === 'action-b') {
+    return [
+      {
+        text: '操作 B 指南',
+        items: [
+          { text: '快速入门', link: '/action-b/quick-start' },
+          { text: '核心概念', link: '/action-b/concepts' },
+          { text: '配置选项', link: '/action-b/configuration' },
+          { text: 'API 参考', link: '/action-b/api' }
+        ]
+      },
+      // 更多侧边栏项...
+    ]
+  }
+}
+                </div>
+                
+                <p>通过这种方式，您可以根据用户的操作或页面状态动态切换侧边栏内容。</p>
+            </div>
+            
+            <div class="content-section">
+                <h2>实际应用场景</h2>
+                <p>这种技术适用于以下场景：</p>
+                <ul>
+                    <li>为不同用户角色显示不同的导航菜单</li>
+                    <li>根据产品功能模块切换文档结构</li>
+                    <li>为多语言文档提供不同的侧边栏</li>
+                    <li>根据用户权限显示或隐藏某些文档部分</li>
+                </ul>
+                
+                <p>点击上方的 <span class="highlight">操作 A</span> 和 <span class="highlight">操作 B</span> 按钮，查看侧边栏的变化效果。</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 切换侧边栏内容
+        document.getElementById('action-a').addEventListener('click', function() {
+            // 更新按钮状态
+            document.getElementById('action-a').classList.add('active');
+            document.getElementById('action-b').classList.remove('active');
+            document.getElementById('action-a').classList.remove('secondary');
+            document.getElementById('action-b').classList.add('secondary');
+            
+            // 切换侧边栏内容
+            document.getElementById('sidebar-content-a').style.display = 'block';
+            document.getElementById('sidebar-content-b').style.display = 'none';
+        });
+        
+        document.getElementById('action-b').addEventListener('click', function() {
+            // 更新按钮状态
+            document.getElementById('action-b').classList.add('active');
+            document.getElementById('action-a').classList.remove('active');
+            document.getElementById('action-b').classList.remove('secondary');
+            document.getElementById('action-a').classList.add('secondary');
+            
+            // 切换侧边栏内容
+            document.getElementById('sidebar-content-a').style.display = 'none';
+            document.getElementById('sidebar-content-b').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
