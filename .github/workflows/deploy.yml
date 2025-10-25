@@ -13,23 +13,24 @@ jobs:
         with:
           fetch-depth: 0
           
-      - name: Clean environment
+      - name: Clean build artifacts only
         run: |
-          echo "=== 清理环境 ==="
+          echo "=== 只清理构建产物 ==="
           rm -rf node_modules
           rm -rf .vitepress/dist
-          rm -f package-lock.json
+          echo "=== 保留的锁文件 ==="
+          ls -la | grep -E "(package-lock|yarn)"
           
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
           
-      - name: Fresh install
+      - name: Install dependencies
         run: |
-          echo "=== 全新安装 ==="
-          npm install
-          echo "=== 安装完成 ==="
+          echo "=== 安装依赖 ==="
+          npm ci --silent
+          echo "=== 依赖安装完成 ==="
           
       - name: Build
         run: |
@@ -37,24 +38,24 @@ jobs:
           npm run docs:build
           echo "=== 构建完成 ==="
           
-      - name: Verify build output
+      - name: Debug build output
         run: |
-          echo "=== 验证构建输出 ==="
-          pwd
+          echo "=== 构建输出调试 ==="
+          echo "当前目录: $(pwd)"
+          echo "--- 根目录文件 ---"
           ls -la
-          echo "--- .vitepress ---"
-          ls -la .vitepress/
-          echo "--- dist 目录 ---"
-          ls -la .vitepress/dist/
-          echo "--- 文件详情 ---"
-          file .vitepress/dist/index.html
-          echo "--- 文件大小 ---"
-          du -sh .vitepress/dist/
-          echo "--- 文件数量 ---"
-          find .vitepress/dist -name "*" -type f | wc -l
-          echo "=== 验证完成 ==="
+          echo "--- .vitepress 内容 ---"
+          ls -la .vitepress/ || echo "没有 .vitepress 目录"
+          echo "--- dist 目录内容 ---"
+          ls -la .vitepress/dist/ || echo "没有 dist 目录"
+          echo "--- 检查关键文件 ---"
+          [ -f ".vitepress/dist/index.html" ] && echo "✓ index.html 存在" || echo "✗ index.html 不存在"
+          [ -d ".vitepress/dist/assets" ] && echo "✓ assets 目录存在" || echo "✗ assets 目录不存在"
+          echo "--- 文件统计 ---"
+          find .vitepress/dist -type f 2>/dev/null | head -10 || echo "没有找到文件"
 
       - name: Deploy
+        if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
