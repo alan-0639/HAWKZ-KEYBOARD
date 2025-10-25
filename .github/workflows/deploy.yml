@@ -21,11 +21,22 @@ jobs:
       - name: Build
         run: npm run docs:build
 
+      # 添加调试步骤
+      - name: Debug - Check build output
+        run: |
+          echo "=== 检查构建输出 ==="
+          ls -la
+          echo "=== 检查 .vitepress 目录 ==="
+          ls -la .vitepress/
+          echo "=== 检查 dist 目录 ==="
+          ls -la .vitepress/dist/
+          echo "=== 检查 index.html ==="
+          find . -name "index.html" -type f
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 修改这里：去掉 docs/ 前缀
           publish_dir: .vitepress/dist
           publish_branch: gh-pages
           full_commit_message: ${{ github.event.head_commit.message }}
