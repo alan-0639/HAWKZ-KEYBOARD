@@ -1,10 +1,9 @@
-# .github > workflows > deploy.yml
 name: Deploy
 
 on:
   push:
     branches:
-      - main  # 修改这里：master → main
+      - main
 
 jobs:
   deploy:
@@ -15,7 +14,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 20 # 修改这里：16 → 20
+          node-version: 18
           cache: npm
       - run: npm install --frozen-lockfile
 
@@ -26,6 +25,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 修改这里：去掉 docs/ 前缀
           publish_dir: .vitepress/dist
           publish_branch: gh-pages
           full_commit_message: ${{ github.event.head_commit.message }}
