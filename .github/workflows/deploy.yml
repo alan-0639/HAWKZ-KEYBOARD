@@ -1,0 +1,64 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Clean build artifacts only
+        run: |
+          echo "=== 只清理构建产物 ==="
+          rm -rf node_modules
+          rm -rf .vitepress/dist
+          echo "=== 保留的锁文件 ==="
+          ls -la | grep -E "(package-lock|yarn)"
+          
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+          
+      - name: Install dependencies
+        run: |
+          echo "=== 安装依赖 ==="
+          npm ci --silent
+          echo "=== 依赖安装完成 ==="
+          
+      - name: Build
+        run: |
+          echo "=== 开始构建 ==="
+          npm run docs:build
+          echo "=== 构建完成 ==="
+          
+      - name: Debug build output
+        run: |
+          echo "=== 构建输出调试 ==="
+          echo "当前目录: $(pwd)"
+          echo "--- 根目录文件 ---"
+          ls -la
+          echo "--- .vitepress 内容 ---"
+          ls -la .vitepress/ || echo "没有 .vitepress 目录"
+          echo "--- dist 目录内容 ---"
+          ls -la .vitepress/dist/ || echo "没有 dist 目录"
+          echo "--- 检查关键文件 ---"
+          [ -f ".vitepress/dist/index.html" ] && echo "✓ index.html 存在" || echo "✗ index.html 不存在"
+          [ -d ".vitepress/dist/assets" ] && echo "✓ assets 目录存在" || echo "✗ assets 目录不存在"
+          echo "--- 文件统计 ---"
+          find .vitepress/dist -type f 2>/dev/null | head -10 || echo "没有找到文件"
+
+      - name: Deploy
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .vitepress/dist
+          publish_branch: gh-pages
+          full_commit_message: ${{ github.event.head_commit.message }}
