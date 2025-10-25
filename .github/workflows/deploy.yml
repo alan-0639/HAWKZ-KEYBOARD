@@ -21,17 +21,20 @@ jobs:
       - name: Build
         run: npm run docs:build
 
-      # 添加调试步骤
-      - name: Debug - Check build output
+      # 详细的调试步骤
+      - name: Debug - Full file check
         run: |
-          echo "=== 检查构建输出 ==="
+          echo "=== 项目根目录 ==="
           ls -la
           echo "=== 检查 .vitepress 目录 ==="
           ls -la .vitepress/
-          echo "=== 检查 dist 目录 ==="
+          echo "=== 检查 dist 目录内容 ==="
           ls -la .vitepress/dist/
-          echo "=== 检查 index.html ==="
-          find . -name "index.html" -type f
+          echo "=== 检查 dist 目录大小 ==="
+          du -sh .vitepress/dist/
+          echo "=== 检查 index.html 是否存在 ==="
+          ls -la .vitepress/dist/index.html
+          echo "=== 构建完成确认 ==="
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
