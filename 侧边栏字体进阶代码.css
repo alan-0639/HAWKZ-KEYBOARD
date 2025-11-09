@@ -1,5 +1,5 @@
-/* 在.vitepress/theme/style.css修改 *//*p3~p75为进阶代码，P80~p108为调试代码*/
-
+/* 在.vitepress/theme/style.css修改 */
+/*p3~p75为进阶代码，P80~p108为调试代码*/
 /* === 重置所有侧边栏文字基础大小 === */
 .VPSidebar .text {
   font-size: 14px;

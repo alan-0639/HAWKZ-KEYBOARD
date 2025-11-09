@@ -8,7 +8,7 @@ hero:
   text: ""
   tagline: 你的品味，不再被量产！
   image:
-   src: /logo_index.png
+   src: /logo_index2.png
    alt: HAWKZ KEYBOARD
 
   actions:

@@ -31,6 +31,8 @@
 }
 
 
+/* =============================================================== */
+
 
 
 
@@ -85,70 +87,344 @@
   border-top: 5px solid #e2e8f0 ;
   padding-top: 10px ;
 }
+/* =============================================================== */
 
 
-/* =========================================== 图片放大效果 === */
-/* .vitepress/theme/style.css */
 
-/* 图片悬停放大效果 */
-/* 选择所有在 VitePress 文档内容区域内的图片 */
+
+
+
+
+
+
+
+
+
+/* =============================================================== */
+
+/* =========================================== 图片大小控制管理 === */
+/**
+ * 基础图片样式 - 重置并优化
+ */
 .vp-doc img {
-  /* 将鼠标指针变为放大镜图标，提示用户可以点击放大 */
-  cursor: zoom-in;
-  /* 为 transform 属性添加 0.3 秒的平滑过渡效果 */
-  transition: transform 0.3s ease;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+  padding: 4px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
 }
 
-/* 当鼠标悬停在图片上时的样式 */
-.vp-doc img:hover {
-  /* 将图片放大到原尺寸的 1.3 倍*/
-  transform: scale(1.3);
+/* =========================================== 预定义尺寸类 === */
+
+.vp-doc img.xsmall {
+  max-width: 25% ;
 }
 
-/* 点击放大的模态框样式 */
-/* 模态框覆盖层 - 用于显示放大后的图片 */
-.img-zoom-overlay {
-  /* 固定定位，覆盖整个视口 */
-  position: fixed;
-  /* 从视口左上角开始定位 */
-  top: 0;
-  left: 0;
-  /* 占据整个视口宽度和高度 */
-  width: 100%;
-  height: 100%;
-  /* 半透明的黑色背景，创造遮罩效果 */
-  background: rgba(0, 0, 0, 0.8);
-  /* 默认隐藏模态框 */
-  display: none;
-  /* 使用 Flex 布局让内容在水平和垂直方向都居中 */
-  justify-content: center;
-  align-items: center;
-  /* 设置很高的 z-index 确保模态框在最上层 */
-  z-index: 1000;
-  /* 将鼠标指针变为缩小图标，提示用户可以点击关闭 */
-  cursor: zoom-out;
+.vp-doc img.small {
+  max-width: 40% ;
 }
 
-/* 当模态框处于激活状态时的样式 */
-.img-zoom-overlay.active {
-  /* 显示模态框 */
-  display: flex;
+.vp-doc img.medium {
+  max-width: 60% ;
 }
 
-/* 放大后的图片内容容器 */
-.img-zoom-content {
-  /* 最大宽度为视口的 90%，防止图片过大 */
-  max-width: 90%;
-  /* 最大高度为视口的 90%，防止图片过高 */
-  max-height: 90%;
-  /* 初始状态缩放为 0.8 倍，为放大动画做准备 */
-  transform: scale(0.8);
-  /* 为缩放效果添加 0.3 秒的平滑过渡 */
-  transition: transform 0.3s ease;
+.vp-doc img.large {
+  max-width: 80% ;
 }
 
-/* 当模态框激活时，图片内容的样式 */
-.img-zoom-overlay.active .img-zoom-content {
-  /* 将图片缩放到正常尺寸（1:1），实现放大效果 */
-  transform: scale(1);
+.vp-doc img.full {
+  max-width: 95% ;
+}
+
+/* =========================================== 固定像素尺寸类 === */
+
+.vp-doc img.width-200 {
+  width: 200px ;
+  height: auto ;
+  max-width: 200px ;
+}
+
+.vp-doc img.width-300 {
+  width: 300px ;
+  height: auto ;
+  max-width: 300px ;
+}
+
+.vp-doc img.width-400 {
+  width: 400px ;
+  height: auto ;
+  max-width: 400px ;
+}
+
+.vp-doc img.width-500 {
+  width: 500px ;
+  height: auto ;
+  max-width: 500px ;
+}
+
+.vp-doc img.width-600 {
+  width: 600px ;
+  height: auto ;
+  max-width: 600px ;
+}
+
+/* =========================================== 特殊用途图片类 === */
+
+.vp-doc img.avatar {
+  width: 80px ;
+  height: 80px ;
+  border-radius: 50% ;
+  object-fit: cover ;
+  display: inline-block ;
+}
+
+.vp-doc img.icon {
+  width: 24px ;
+  height: 24px ;
+  display: inline-block ;
+  vertical-align: middle ;
+  border: none ;
+  padding: 0;
+}
+
+.vp-doc img.banner {
+  width: 100% ;
+  max-height: 300px ;
+  object-fit: cover ;
+  border-radius: 0 ;
+  border: none ;
+}
+
+/* =========================================== 图片布局系统 === */
+
+/* 图片行容器基础样式 */
+.vp-doc .image-row {
+  display: flex ;
+  justify-content: center ;
+  align-items: flex-start ;
+  flex-wrap: wrap ;
+  gap: 20px ;
+  margin: 30px 0 ;
+  width: 100% ;
+  box-sizing: border-box ;
+}
+
+/* 严格一张布局 */
+.vp-doc .image-row-1 .image-item {
+  flex: 0 0 calc(100% - 10px) ;
+  min-width: calc(100% - 10px) ;
+  max-width: calc(100% - 10px) ;
+}
+
+/* 严格两列布局 */
+.vp-doc .image-row-2 .image-item {
+  flex: 0 0 calc(50% - 10px) ;
+  min-width: calc(50% - 10px) ;
+  max-width: calc(50% - 10px) ;
+}
+
+/* 严格三列布局 */
+.vp-doc .image-row-3 .image-item {
+  flex: 0 0 calc(33.333% - 14px) ;
+  min-width: calc(33.333% - 14px) ;
+  max-width: calc(33.333% - 14px) ;
+}
+
+/* 严格四列布局 */
+.vp-doc .image-row-4 .image-item {
+  flex: 0 0 calc(25% - 15px) ;
+  min-width: calc(25% - 15px) ;
+  max-width: calc(25% - 15px) ;
+}
+
+/* 严格五列布局 */
+.vp-doc .image-row-5 .image-item {
+  flex: 0 0 calc(20% - 16px) ;
+  min-width: calc(20% - 16px) ;
+  max-width: calc(20% - 16px) ;
+}
+
+/* 严格六列布局 */
+.vp-doc .image-row-6 .image-item {
+  flex: 0 0 calc(16.666% - 16.67px) ;
+  min-width: calc(16.666% - 16.67px) ;
+  max-width: calc(16.666% - 16.67px) ;
+}
+
+/* 图片项通用样式 */
+.vp-doc .image-row .image-item {
+  text-align: center ;
+  box-sizing: border-box ;
+}
+
+.vp-doc .image-row .image-item img {
+  width: 100% ;
+  height: auto ;
+  object-fit: cover ;
+  border-radius: 8px ;
+  display: block ;
+  margin: 0 ;
+  box-sizing: border-box ;
+  cursor: zoom-in ;
+  transition: all 0.3s ease ;
+}
+
+/* 两列布局 */
+.vp-doc .two-columns {
+  display: flex ;
+  gap: 20px ;
+  margin: 30px 0 ;
+  width: 100% ;
+  box-sizing: border-box ;
+}
+
+.vp-doc .two-columns .image-item {
+  flex: 1 ;
+  min-width: 0 ;
+  box-sizing: border-box ;
+}
+
+.vp-doc .two-columns .image-item img {
+  width: 100% ;
+  height: auto ;
+  display: block ;
+  box-sizing: border-box ;
+}
+
+/* 三列布局 */
+.vp-doc .three-columns {
+  display: flex ;
+  gap: 15px ;
+  margin: 30px 0 ;
+  width: 100% ;
+  box-sizing: border-box ;
+}
+
+.vp-doc .three-columns .image-item {
+  flex: 1 ;
+  min-width: 0 ;
+  box-sizing: border-box ;
+}
+
+.vp-doc .three-columns .image-item img {
+  width: 100% ;
+  height: auto ;
+  display: block ;
+  box-sizing: border-box ;
+}
+
+/* =========================================== 悬停放大效果系统 === */
+
+/* 默认悬停效果（中等放大）- 对所有图片行生效 */
+.vp-doc .image-row .image-item img:hover {
+  transform: scale(1.8) ;
+  z-index: 1000 ;
+  position: relative ;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) ;
+  border: 3px solid #409eff ;
+}
+
+/* 小尺寸放大 - 1.4倍 */
+.vp-doc .image-row .image-item img.zoom-small:hover {
+  transform: scale(1.4) ;
+  border-color: #67c23a ;
+}
+
+/* 中等尺寸放大 - 1.8倍（默认） */
+.vp-doc .image-row .image-item img.zoom-medium:hover {
+  transform: scale(1.8) ;
+  border-color: #409eff ;
+}
+
+/* 大尺寸放大 - 2.2倍 */
+.vp-doc .image-row .image-item img.zoom-large:hover {
+  transform: scale(2.2) ;
+  border-color: #e6a23c ;
+}
+
+/* 超大尺寸放大 - 2.6倍 */
+.vp-doc .image-row .image-item img.zoom-xlarge:hover {
+  transform: scale(2.6) ;
+  border-color: #f56c6c ;
+}
+
+/* 全屏放大 - 3.0倍 */
+.vp-doc .image-row .image-item img.zoom-fullscreen:hover {
+  transform: scale(3.0) ;
+  border-color: #909399 ;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4) ;
+}
+
+/* 无放大效果 */
+.vp-doc .image-row .image-item img.zoom-none:hover {
+  transform: none ;
+  border-color: transparent ;
+  box-shadow: none ;
+  cursor: default ;
+}
+
+/* 其他布局容器禁用悬停效果 */
+.vp-doc .two-columns .image-item img:hover,
+.vp-doc .three-columns .image-item img:hover {
+  transform: none ;
+  box-shadow: none ;
+  border-color: #f0f0f0 ;
+  cursor: default ;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .vp-doc .image-row,
+  .vp-doc .two-columns,
+  .vp-doc .three-columns {
+    flex-direction: column ;
+    gap: 15px ;
+  }
+  
+  .vp-doc .image-row .image-item,
+  .vp-doc .two-columns .image-item,
+  .vp-doc .three-columns .image-item {
+    flex: 1 0 100% ;
+    min-width: 100% ;
+    max-width: 100% ;
+  }
+  
+  /* 移动端缩小放大倍数 */
+  .vp-doc .image-row .image-item img:hover {
+    transform: scale(1.4) ;
+  }
+  
+  .vp-doc .image-row .image-item img.zoom-small:hover {
+    transform: scale(1.2) ;
+  }
+  
+  .vp-doc .image-row .image-item img.zoom-medium:hover {
+    transform: scale(1.4) ;
+  }
+  
+  .vp-doc .image-row .image-item img.zoom-large:hover {
+    transform: scale(1.6) ;
+  }
+  
+  .vp-doc .image-row .image-item img.zoom-xlarge:hover {
+    transform: scale(1.8) ;
+  }
+  
+  .vp-doc .image-row .image-item img.zoom-fullscreen:hover {
+    transform: scale(2.0) ;
+  }
+}
+
+/* 中等屏幕适配 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .vp-doc .image-row-5 .image-item,
+  .vp-doc .image-row-6 .image-item {
+    flex: 0 0 calc(25% - 15px) ;
+    min-width: calc(25% - 15px) ;
+    max-width: calc(25% - 15px) ;
+  }
 }
