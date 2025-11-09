@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r,ae as o}from"./chunks/framework.D6wf4lw6.js";const p=JSON.parse('{"title":"默认配置","description":"","frontmatter":{},"headers":[],"relativePath":"docs/默认配置.md","filePath":"docs/默认配置.md"}'),i={name:"docs/默认配置.md"};function l(n,a,s,h,d,_){return r(),t("div",null,[...a[0]||(a[0]=[o("",6)])])}const m=e(i,[["render",l]]);export{p as __pageData,m as default};
