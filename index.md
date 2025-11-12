@@ -3,74 +3,75 @@
 # http://localhost:5173/
 layout: home
 
+
 hero:
-  name: "客制化机械键盘套件"
+  name: "客製化機械鍵盤套件"
   text: ""
-  tagline: 你的品味，不再被量产！
+  tagline: 你的品味，不再被量產！
   image:
    src: /logo_index2.png
    alt: HAWKZ KEYBOARD
 
   actions:
     - theme: brand
-      text: 立即探索
-      link: docs/基础定制/键盘内胆
-      target: blank
+      text: 繁體中文
+      link: '/zh-HK/'
+
+    - theme: brand
+      text: 简体中文
+      link: '/zh-cn/'
+
+    - theme: brand
+      text: English
+      link: '/en-US/'
+
 
 
 features:
-  - title: 默认-支持Vial实时改键
-    details: 真正的实时生效，无需编译，无需刷写固件。灵感与设置同步，想到即改，改完即用。
+  - title: 預設-支援Vial即時改鍵
+    details: 真正的即時生效，無需編譯，無需刷寫韌體。靈感與設定同步，想到即改，改完即用。
     link: 
     target: blank
 
-  - title: 默认-支持三模连接
-    details: 支持数据线模式  <br>支持蓝牙1/蓝牙2/蓝牙3模式  <br>支持接收器模式
+  - title: 預設-支援三模連接
+    details: 支援資料線模式  <br>支援藍牙1/藍牙2/藍牙3模式  <br>支援接收器模式
     link: 
     target: blank
 
-  - title: 基础定制-姓名/LOGO定制
-    details: 这不是一把量产键盘，是你的领地。<br>刻上你的名，印上你的徽，从此，每一次敲击都是自我的回响。
+  - title: 基礎訂製-姓名/LOGO定制
+    details: 這不是一把量產鍵盤，是你的領地。<br>刻上你的名，印上你的徽，從此，每一次敲擊都是自我的迴響。
     link: 
     target: blank
 
-  - title: 基础定制-常规轴和矮轴
-    details: 探索高轴系列-传统机械的饱满旅程  <br>发现矮轴世界-极致触发的迅捷美学
+  - title: 基礎訂製-常規軸和矮軸
+    details: 探索高軸系列-傳統機械的飽滿旅程  <br>發現矮軸世界-極致觸發的迅捷美學
     link: 
     target: blank
 
-  - title: 基础定制-基础声音套件
-    details: 夹心棉、轴下垫、底棉等填充的护航，告别空腔杂音，抵达纯净之境。
+  - title: 基礎訂製-基礎聲音套件
+    details: 夾心棉、軸下墊、底棉等填充的護航，告別空腔雜音，抵達純淨之境。
     link: 
     target: blank    
 
-  - title: 基础定制-客制化配列
-    details: 单独的PCB原理图和电路图的设计。 <br>终极的客制化，从重塑布局开始。
+  - title: 基礎訂製-客製化配列
+    details: 單獨的PCB原理圖和電路圖的設計。 <br>終極的客製化，從重塑佈局開始。
     link: 
     target: blank
 
-  - title: 深度定制-定制键盘结构
-    details: 根据需求设计TOP、BOTTOM、GASKET、船、三明治、无钢等结构
+  - title: 深度訂製-製制鍵盤結構
+    details: 根據需求設計TOP、BOTTOM、GASKET、船、三明治、無鋼等結構
     link: 
     target: blank
 
-  - title: 深度定制-全新外壳3D图设计
-    details: 根据需求重新绘制键盘外壳和内部细节，与PCB、声音包等尺寸相互兼容
+  - title: 深度訂製-全新外殼3D圖設計
+    details: 根據需求重新繪製鍵盤外殼和內部細節，與PCB、聲音包等尺寸相互兼容
     link: 
     target: blank
-
 
 ---
 
-## 机械键盘爱好者的乐园
-<style>
-.hero-extra {
-/*  margin-top: 0rem;   */
-  text-align: center;
-  color: var(--vp-c-text-2);
-}
-</style>
+###
 
-<div class="hero-extra">
-  <p>......暂不支持OLED和ENCODER，敬请期待......</p>
-</div>
+# 機械鍵盤愛好者的樂園
+
+  暫不支持OLED和ENCODER，敬請期待......
