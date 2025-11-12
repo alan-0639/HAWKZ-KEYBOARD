@@ -19,7 +19,7 @@ hero:
 
     - theme: brand
       text: 简体中文
-      link: '/zh-cn/'
+      link: '/zh-CN/'
 
     - theme: brand
       text: English
