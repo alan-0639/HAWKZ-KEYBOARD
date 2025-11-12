@@ -176,16 +176,11 @@ export default defineConfig({
     
     // 页脚配置
     footer: {
-      message: 'Released under the MIT License.',
+
       //message: 'Released under the MIT License.',
       copyright: 'Copyright © 2025 HAWKZ KEYBOARD'
     },
-    
-    // 编辑链接
-    editLink: {
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
-      text: 'Edit this page on GitHub'
-    }
+
   },
   
   // 最后更新时间
