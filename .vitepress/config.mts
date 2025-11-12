@@ -184,7 +184,7 @@ export default defineConfig({
   },
   
   // 最后更新时间
-  lastUpdated: true,
+  lastUpdated: false,
   
   // 大纲深度
   outline: {
