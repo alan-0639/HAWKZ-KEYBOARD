@@ -17,6 +17,7 @@ export default defineConfig({
   base: '/HAWKZ-KEYBOARD/',
   title: "Custom Keyboard",
   description: "機械鍵盤愛好者的樂園",
+  
 
  // srcDir: 'zh-HK', // 明确指定源文件目录
   // 多语言配置
@@ -167,7 +168,7 @@ export default defineConfig({
 
   // 全局主题配置
   themeConfig: {
-    logo: '/LOGO.jpg',
+    logo:{ light: '/LOGO HAWKZ_black.png', dark: '/LOGO HAWKZ_white.png' },
     
     // 社交链接
     socialLinks: [
