@@ -20,7 +20,7 @@ export default {
     items: [
       { text: '', 
         items: [
-          { text: '799', 
+          { text: 'HK💵659，⏰One week', 
             items: [
               {  }
             ] }
@@ -59,7 +59,7 @@ export default {
     items: [
       { text: '', 
         items: [
-          { text: '499',
+          { text: 'HK💵219，⏰One week',
             items: [
               {  }
             ] }
@@ -75,7 +75,7 @@ export default {
     items: [
       { text: '', 
         items: [
-          { text: '1699', 
+          { text: 'HK💵1859，⏰One month', 
             items: [
               {  }
             ] }

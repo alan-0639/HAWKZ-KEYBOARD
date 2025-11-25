@@ -13,6 +13,7 @@ hero:
     - theme: brand
       text: 立即探索
       link: '/zh-CN/基础定制/键盘内胆'
+      target: blank
 
 features:
   - title: 默认-支持Vial实时改键

@@ -13,7 +13,9 @@ hero:
     - theme: brand
       text: Explore Now
       link: '/en-US/基础定制/键盘内胆'
+      target: blank
 
+      
 features:
   - title: Default - Vial Real-time Key Remapping
     details: Truly real-time, no compilation or firmware flashing required. Your inspiration and settings sync instantly.

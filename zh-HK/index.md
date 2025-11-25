@@ -24,7 +24,7 @@ features:
     target: blank
 
   - title: 預設-支援三模連接
-    details: 支援資料線模式  <br>支援藍牙1/藍牙2/藍牙3模式  <br>支援接收器模式
+    details: 支援數據綫模式  <br>支援藍牙1/藍牙2/藍牙3模式  <br>支援接收器模式
     link: 
     target: blank
 
@@ -43,17 +43,17 @@ features:
     link: 
     target: blank    
 
-  - title: 基礎訂製-客製化配列
+  - title: 基礎訂製-自定義按鍵佈局
     details: 單獨的PCB原理圖和電路圖的設計。 <br>終極的客製化，從重塑佈局開始。
     link: 
     target: blank
 
-  - title: 深度訂製-製制鍵盤結構
-    details: 根據需求設計TOP、BOTTOM、GASKET、船、三明治、無鋼等結構
+  - title: 高級訂製-重塑鍵盤結構
+    details: 根據需求設計GASKET、TOP、BOTTOM、船、三明治、無鋼等結構
     link: 
     target: blank
 
-  - title: 深度訂製-全新外殼3D圖設計
+  - title: 高級訂製-全新外殼3D圖設計
     details: 根據需求重新繪製鍵盤外殼和內部細節，與PCB、聲音包等尺寸相互兼容
     link: 
     target: blank

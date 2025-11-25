@@ -99,7 +99,8 @@
 
 
 
-
+/* =============================================================== */
+/* 图片样式响应式控制 - 非电脑端禁用互动效果 */
 /* =============================================================== */
 
 /* =========================================== 图片大小控制管理 === */
@@ -192,7 +193,7 @@
 }
 
 .vp-doc img.banner {
-  width: 100% ;
+  width: 200% ;
   max-height: 300px ;
   object-fit: cover ;
   border-radius: 0 ;
@@ -376,7 +377,38 @@
   cursor: default ;
 }
 
-/* 响应式调整 */
+/* =========================================== 响应式调整 === */
+
+/* 中等屏幕适配 - 平板设备 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .vp-doc .image-row-5 .image-item,
+  .vp-doc .image-row-6 .image-item {
+    flex: 0 0 calc(25% - 15px) ;
+    min-width: calc(25% - 15px) ;
+    max-width: calc(25% - 15px) ;
+  }
+  
+  /* 平板设备禁用所有悬停效果 */
+  .vp-doc .image-row .image-item img {
+    cursor: default !important;
+  }
+  
+  .vp-doc .image-row .image-item img:hover,
+  .vp-doc .image-row .image-item img.zoom-small:hover,
+  .vp-doc .image-row .image-item img.zoom-medium:hover,
+  .vp-doc .image-row .image-item img.zoom-large:hover,
+  .vp-doc .image-row .image-item img.zoom-xlarge:hover,
+  .vp-doc .image-row .image-item img.zoom-fullscreen:hover {
+    transform: none !important;
+    z-index: auto !important;
+    position: static !important;
+    box-shadow: none !important;
+    border: 1px solid #f0f0f0 !important;
+    cursor: default !important;
+  }
+}
+
+/* 移动端设备 - 手机 */
 @media (max-width: 768px) {
   .vp-doc .image-row,
   .vp-doc .two-columns,
@@ -393,39 +425,165 @@
     max-width: 100% ;
   }
   
-  /* 移动端缩小放大倍数 */
-  .vp-doc .image-row .image-item img:hover {
-    transform: scale(1.4) ;
+  /* 移动端完全禁用所有悬停和互动效果 */
+  .vp-doc .image-row .image-item img {
+    cursor: default !important;
+    transition: none !important;
   }
   
-  .vp-doc .image-row .image-item img.zoom-small:hover {
-    transform: scale(1.2) ;
-  }
-  
-  .vp-doc .image-row .image-item img.zoom-medium:hover {
-    transform: scale(1.4) ;
-  }
-  
-  .vp-doc .image-row .image-item img.zoom-large:hover {
-    transform: scale(1.6) ;
-  }
-  
-  .vp-doc .image-row .image-item img.zoom-xlarge:hover {
-    transform: scale(1.8) ;
-  }
-  
+  .vp-doc .image-row .image-item img:hover,
+  .vp-doc .image-row .image-item img.zoom-small:hover,
+  .vp-doc .image-row .image-item img.zoom-medium:hover,
+  .vp-doc .image-row .image-item img.zoom-large:hover,
+  .vp-doc .image-row .image-item img.zoom-xlarge:hover,
   .vp-doc .image-row .image-item img.zoom-fullscreen:hover {
-    transform: scale(2.0) ;
+    transform: none !important;
+    z-index: auto !important;
+    position: static !important;
+    box-shadow: none !important;
+    border: 1px solid #f0f0f0 !important;
+    cursor: default !important;
+  }
+  
+  /* 移动端调整特殊图片尺寸 */
+  .vp-doc img.xsmall,
+  .vp-doc img.small,
+  .vp-doc img.medium,
+  .vp-doc img.large {
+    max-width: 95% !important;
   }
 }
 
-/* 中等屏幕适配 */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .vp-doc .image-row-5 .image-item,
-  .vp-doc .image-row-6 .image-item {
-    flex: 0 0 calc(25% - 15px) ;
-    min-width: calc(25% - 15px) ;
-    max-width: calc(25% - 15px) ;
-  }
+/* =========================================== 电脑端专用样式 === */
+
+
+/* 仅电脑端保留完整互动效果 */
+@media (min-width: 1025px) {
+  /* 电脑端保持所有原有的悬停效果 */
+  /* 这里不需要额外代码，因为上面的悬停效果默认在电脑端生效 */
 }
 
+/* 注释说明：
+ * 1. 在平板设备 (769px-1024px) 中禁用了所有图片悬停放大效果
+ * 2. 在移动设备 (≤768px) 中完全禁用所有互动效果，包括过渡动画
+ * 3. 电脑端 (≥1025px) 保持所有原有的悬停和互动效果
+ * 4. 如需修改设备断点，可调整上述媒体查询的宽度值
+ * 5. 如需重新启用某些效果，可删除对应设备下的禁用样式
+ */
+
+
+/* =========================================== 鏈接按鈕 === */
+/* Vial 按钮样式系统 - 包含固定尺寸选项 */
+.vial-buttons {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vial-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  color: white !important;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  
+  border: 2px solid;
+  box-sizing: border-box;
+}
+
+/* 弹性按钮 - 多个按钮时平均分配宽度 */
+.vial-buttons .vial-btn {
+  flex: 1;
+}
+
+/* 固定尺寸按钮 */
+.vial-btn.fixed {
+  width: auto !important;
+  flex: none !important;
+  min-width: 180px; /* 最小宽度 */
+}
+
+/* 预设固定尺寸 */
+.vial-btn.fixed-small {
+  width: 140px;
+  flex: none !important;
+}
+
+.vial-btn.fixed-medium {
+  width: 200px;
+  flex: none !important;
+}
+
+.vial-btn.fixed-large {
+  width: 260px;
+  flex: none !important;
+}
+
+/* 颜色变体 */
+.vial-btn.primary {
+  background-color: #a9cfec;
+  border-color: #8bb8e0;
+}
+
+.vial-btn.primary:hover {
+  background-color: #d199f1;
+  border-color: #c084e3;
+}
+
+.vial-btn.secondary {
+  background-color: #90EE90;
+  border-color: #7CCD7C;
+}
+
+.vial-btn.secondary:hover {
+  background-color: #7CFC00;
+  border-color: #66CD00;
+}
+
+/* 尺寸变体 */
+.vial-btn.small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.vial-btn.large {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+/* 单个按钮容器 - 专门用于单个固定尺寸按钮 */
+.vial-button-single {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .vial-buttons {
+    flex-direction: column;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  
+  .vial-btn {
+    margin-bottom: 10px;
+  }
+  
+  /* 移动端固定按钮全宽 */
+  .vial-btn.fixed,
+  .vial-btn.fixed-small,
+  .vial-btn.fixed-medium,
+  .vial-btn.fixed-large {
+    width: 100% !important;
+  }
+}
