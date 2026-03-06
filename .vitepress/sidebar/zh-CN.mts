@@ -1,5 +1,4 @@
-export default { 
-     '/zh-CN/':[{
+export default [{
         text: '默认配置-强大功能 👀',link: '/zh-CN/默认配置',
         items: [
           { text: '⭐-支持Vial实时改键', link: '',
@@ -20,7 +19,7 @@ export default {
         items: [
           { text: '', 
             items:[
-              { text: '💴599，⏰一周', 
+              { text: '💴699，⏰一周', 
             items:[
               {  }
             ] }
@@ -59,7 +58,7 @@ export default {
             items:[
           { text: '', 
             items:[
-              { text: '💴199，⏰一周',
+              { text: '💴399，⏰一周',
             items:[
               {  }
             ] }
@@ -98,10 +97,4 @@ export default {
       },
 
 
-    ],
-
-
-
-
-}
-
+    ]

@@ -11,9 +11,15 @@ hero:
 
   actions:
     - theme: brand
-      text: 立即探索
+      text: 从零开始
       link: '/zh-CN/基础定制/键盘内胆'
       target: blank
+
+    - theme: brand
+      text: 成品套件-果冻102
+      link: '/zh-CN/HAWKZ-jelly102-CN/index'
+      target: blank
+
 
 features:
   - title: 默认-支持Vial实时改键

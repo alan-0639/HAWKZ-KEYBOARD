@@ -4,11 +4,14 @@ import { defineConfig } from 'vitepress'
 import navZhHK from './nav/zh-HK.mts'
 import navZhCN from './nav/zh-CN.mts'
 import navEnUS from './nav/en-US.mts'
+import navHAWKZ from './nav/HAWKZ-jelly102-CN.mts'
+
 
 // 导入侧边栏配置
 import sidebarZhHK from './sidebar/zh-HK.mts'
 import sidebarZhCN from './sidebar/zh-CN.mts'
 import sidebarEnUS from './sidebar/en-US.mts'
+import sidebarjelly102 from './sidebar/HAWKZ-jelly102-CN.mts'
 
 
 
@@ -78,7 +81,10 @@ export default defineConfig({
       link: '/zh-CN',
       themeConfig: {
         nav: navZhCN,
-        sidebar: sidebarZhCN,
+           sidebar: {
+      '/zh-CN/': sidebarZhCN,                // 默认路径使用原来的简体中文侧边栏
+      '/zh-CN/HAWKZ-jelly102-CN/': sidebarjelly102  // 当访问 /HAWKZ-jelly102/ 下的页面时，使用新的侧边栏
+    },
         
         // 简体中文的界面文本
         docFooter: {
@@ -117,6 +123,8 @@ export default defineConfig({
         }
       }
     },
+
+
 
     // 英文
     'en-US': {

@@ -14,12 +14,7 @@ hero:
   actions:
     - theme: brand
       text: 立即探索
-      link: '/zh-HK/基础定制/键盘内胆'
-      target: blank
-
-    - theme: brand
-      text: 成品套件-果冻102
-      link: '/zh-HK/HAWKZ-jelly102-HK/index'
+      link: '/HAWKZ-jelly102-HK/基础定制/键盘内胆'
       target: blank
 
 features:
