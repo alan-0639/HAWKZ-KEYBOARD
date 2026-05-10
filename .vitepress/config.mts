@@ -4,15 +4,15 @@ import { defineConfig } from 'vitepress'
 import navZhHK from './nav/zh-HK.mts'
 import navZhCN from './nav/zh-CN.mts'
 import navEnUS from './nav/en-US.mts'
-import navHAWKZ from './nav/HAWKZ-jelly102-CN.mts'
+
 
 
 // 导入侧边栏配置
 import sidebarZhHK from './sidebar/zh-HK.mts'
 import sidebarZhCN from './sidebar/zh-CN.mts'
 import sidebarEnUS from './sidebar/en-US.mts'
-import sidebarjelly102 from './sidebar/HAWKZ-jelly102-CN.mts'
-
+import sidebardimsum102CN from './sidebar/HAWKZ-dim-sum-102-CN.mts'
+import sidebardimsum102HK from './sidebar/HAWKZ-dim-sum-102-HK.mts'
 
 
 // https://vitepress.dev/reference/site-config
@@ -34,9 +34,12 @@ export default defineConfig({
 
       themeConfig: {
         nav: navZhHK,
-        sidebar: sidebarZhHK,
-        
-        // 香港繁体中文的界面文本
+      //sidebar: sidebarZhHK,
+        sidebar: {
+      '/zh-HK/': sidebarZhHK,                // 默认路径使用原来的简体中文侧边栏
+      '/zh-HK/HAWKZ-dim-sum-102/': sidebardimsum102HK  // 当访问 /HAWKZ-dim-sum-102/ 下的页面时，使用新的侧边栏
+    },
+                // 香港繁体中文的界面文本
         docFooter: {
           prev: '上一頁',
           next: '下一頁'
@@ -81,9 +84,9 @@ export default defineConfig({
       link: '/zh-CN',
       themeConfig: {
         nav: navZhCN,
-           sidebar: {
+        sidebar: {
       '/zh-CN/': sidebarZhCN,                // 默认路径使用原来的简体中文侧边栏
-      '/zh-CN/HAWKZ-jelly102-CN/': sidebarjelly102  // 当访问 /HAWKZ-jelly102/ 下的页面时，使用新的侧边栏
+      '/zh-CN/HAWKZ-dim-sum-102/': sidebardimsum102CN  // 当访问 /HAWKZ-dim-sum-102/ 下的页面时，使用新的侧边栏
     },
         
         // 简体中文的界面文本

@@ -1,5 +1,4 @@
-export default { 
-     '/':[{
+export default [{
         text: '默認配置-强大功能 👀',link: '/zh-HK/默认配置',
         items: [
           { text: '⭐-支持Vial實時改鍵', link: '',
@@ -20,7 +19,7 @@ export default {
         items: [
           { text: '', 
             items:[
-              { text: 'HK💵659，⏰一周', 
+              { text: '', 
             items:[
               {  }
             ] }
@@ -59,7 +58,7 @@ export default {
             items:[
           { text: '', 
             items:[
-              { text: 'HK💵219，⏰一周',
+              { text: '',
             items:[
               {  }
             ] }
@@ -76,7 +75,7 @@ export default {
         items: [
           { text: '', 
             items:[
-              { text: 'HK💵1859，⏰一個月', 
+              { text: '', 
             items:[
               {  }
             ] }
@@ -98,10 +97,9 @@ export default {
       },
 
 
-    ],
+    ]
 
 
 
 
-}
 

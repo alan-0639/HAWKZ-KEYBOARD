@@ -1,6 +1,6 @@
 export default [{
 
-   text: '套件配置-果冻102 👀',link: '/zh-CN/HAWKZ-jelly102-CN/基本配置',
+   text: '套件配置-点心102 👀',link: '/zh-CN/HAWKZ-dim-sum-102/基本配置',
         items: [
           { text: '🔢-三种连接模式', link: '',
             items:[
@@ -42,17 +42,17 @@ export default [{
             ] }
             ]
           },
-          { text: '💎-轴体推荐 👀',link: '/zh-CN/HAWKZ-jelly102-CN/轴体选择',
+          { text: '💎-轴体推荐 👀',link: '/zh-CN/HAWKZ-dim-sum-102/轴体选择',
             //collapsed:true,    /*下拉菜单*/ 
             items:[
-              { text: '',link: '/zh-CN/基础定制/配列选择/默认配列',  },
-              { text: '',link: '/zh-CN/基础定制/配列选择/默认配列',  },
-              { text: '',link: '/zh-CN/基础定制/配列选择/默认配列',  },
-              { text: '',link: '/zh-CN/基础定制/配列选择/默认配列',  },
-              { text: '',link: '/zh-CN/基础定制/配列选择/默认配列',  }
+              { text: '',link: '/zh-CN/HAWKZ-dim-sum-102/轴体选择',  },
+              { text: '',link: '/zh-CN/HAWKZ-dim-sum-102/轴体选择',  },
+              { text: '',link: '/zh-CN/HAWKZ-dim-sum-102/轴体选择',  },
+              { text: '',link: '/zh-CN/HAWKZ-dim-sum-102/轴体选择',  },
+              { text: '',link: '/zh-CN/HAWKZ-dim-sum-102/轴体选择',  }
             ] 
           },
-          { text: '🧢-键帽推介 👀',link: '/zh-CN/HAWKZ-jelly102-CN/键帽类型',
+          { text: '🧢-键帽简介 👀',link: '/zh-CN/HAWKZ-dim-sum-102/键帽类型',
             //collapsed:true,   /*下拉菜单*/ 
             items:[
               { text: '',link: '/zh-CN/基础定制/轴体选择/高轴',  },
@@ -61,7 +61,7 @@ export default [{
           }
         ]
       },{
-   text: '📖 说明书 👀', link: '/zh-CN/基础定制/基础外壳',
+   text: '📖 说明书 👀', link: '/zh-CN/HAWKZ-dim-sum-102/说明书',
             items:[
           { text: '', 
             items:[

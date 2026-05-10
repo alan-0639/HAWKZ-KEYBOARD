@@ -13,13 +13,13 @@ hero:
 
   actions:
     - theme: brand
-      text: 立即探索
+      text: 開始探索
       link: '/zh-HK/基础定制/键盘内胆'
       target: blank
 
     - theme: brand
-      text: 成品套件-果冻102
-      link: '/zh-HK/HAWKZ-jelly102-HK/index'
+      text: 成品套件-點心102
+      link: '/zh-HK/HAWKZ-dim-sum-102/index'
       target: blank
 
 features:

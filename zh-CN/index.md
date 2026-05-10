@@ -16,8 +16,8 @@ hero:
       target: blank
 
     - theme: brand
-      text: 成品套件-果冻102
-      link: '/zh-CN/HAWKZ-jelly102-CN/index'
+      text: 成品套件-点心102
+      link: '/zh-CN/HAWKZ-dim-sum-102/index' 
       target: blank
 
 

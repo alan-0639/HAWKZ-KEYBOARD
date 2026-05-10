@@ -19,7 +19,7 @@ export default [{
         items: [
           { text: '', 
             items:[
-              { text: '💴699，⏰一周', 
+              { text: '', 
             items:[
               {  }
             ] }
@@ -58,7 +58,7 @@ export default [{
             items:[
           { text: '', 
             items:[
-              { text: '💴399，⏰一周',
+              { text: '',
             items:[
               {  }
             ] }
@@ -75,7 +75,7 @@ export default [{
         items: [
           { text: '', 
             items:[
-              { text: '💴1699，⏰一个月', 
+              { text: '', 
             items:[
               {  }
             ] }
